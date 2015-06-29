@@ -4,7 +4,7 @@ var LocationStore = require('../stores/LocationStore');
 var FavoritesStore = require('../stores/FavoritesStore');
 var LocationActions = require('../actions/LocationActions');
 
-var Favorites = React.createClass({
+class Favorites extends React.Component {
   render() {
     return (
       <ul>
@@ -16,15 +16,15 @@ var Favorites = React.createClass({
       </ul>
     );
   }
-});
+}
 
-var AllLocations = React.createClass({
+class AllLocations extends React.Component {
   addFave(ev) {
     var location = LocationStore.getLocation(
       Number(ev.target.getAttribute('data-id'))
     );
     LocationActions.favoriteLocation(location);
-  },
+  }
 
   render() {
     if (this.props.errorMessage) {
@@ -59,12 +59,12 @@ var AllLocations = React.createClass({
       </ul>
     );
   }
-});
+}
 
-var Locations = React.createClass({
+class Locations extends React.Component {
   componentDidMount() {
     LocationStore.fetchLocations();
-  },
+  }
 
   render() {
     return (
@@ -81,6 +81,6 @@ var Locations = React.createClass({
       </div>
     );
   }
-});
+}
 
 module.exports = Locations;
